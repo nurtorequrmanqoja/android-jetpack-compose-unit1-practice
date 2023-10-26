@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    Greeting(title1 = getString(R.string.title_1), text1 = getString(R.string.text_1))
                 }
             }
         }
@@ -42,9 +43,39 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(title1: String, text1:String, modifier: Modifier = Modifier) {
-    Column (
-        modifier = modifier.background(Color(0xFFEADDFF))
-    ){
+    Column {
+        Row {
+            Quadrant(
+                title = stringResource(id = R.string.title_1),
+                text = stringResource(id = R.string.text_1),
+                backgroundColor = Color(0xFFEADDFF)
+            )
+            Quadrant(
+                title = stringResource(id = R.string.title_1),
+                text = stringResource(id = R.string.text_1),
+                backgroundColor = Color(0xFFEADDFF)
+            )
+        }
+        Row {
+            Quadrant(
+                title = stringResource(id = R.string.title_1),
+                text = stringResource(id = R.string.text_1),
+                backgroundColor = Color(0xFFEADDFF)
+            )
+            Quadrant(
+                title = stringResource(id = R.string.title_1),
+                text = stringResource(id = R.string.text_1),
+                backgroundColor = Color(0xFFEADDFF)
+            )
+        }
+    }
+
+}
+@Composable
+fun Quadrant(title: String, text: String, backgroundColor: Color, modifier : Modifier = Modifier){
+    Column(
+        modifier = modifier.background(backgroundColor)
+    ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -55,20 +86,20 @@ fun Greeting(title1: String, text1:String, modifier: Modifier = Modifier) {
 
         ) {
             Text(
-                text = title1,
+                text = title,
                 fontWeight = FontWeight.Bold,
                 modifier = modifier.padding(bottom = 16.dp)
             )
             Text(
-                text = text1,
+                text = text,
                 textAlign = TextAlign.Justify,
                 modifier = modifier
 
             )
         }
+
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {

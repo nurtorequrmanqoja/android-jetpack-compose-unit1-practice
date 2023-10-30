@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting(title1 = getString(R.string.title_1), text1 = getString(R.string.text_1))
+                    Greeting()
                 }
             }
         }
@@ -42,33 +42,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(title1: String, text1:String, modifier: Modifier = Modifier) {
-    Column {
-        Row {
-            Quadrant(
-                title = stringResource(id = R.string.title_1),
-                text = stringResource(id = R.string.text_1),
-                backgroundColor = Color(0xFFEADDFF)
-            )
-            Quadrant(
-                title = stringResource(id = R.string.title_1),
-                text = stringResource(id = R.string.text_1),
-                backgroundColor = Color(0xFFEADDFF)
-            )
-        }
-        Row {
-            Quadrant(
-                title = stringResource(id = R.string.title_1),
-                text = stringResource(id = R.string.text_1),
-                backgroundColor = Color(0xFFEADDFF)
-            )
-            Quadrant(
-                title = stringResource(id = R.string.title_1),
-                text = stringResource(id = R.string.text_1),
-                backgroundColor = Color(0xFFEADDFF)
-            )
-        }
+fun Greeting() {
+
+    Row (){
+        Quadrant(
+            title = stringResource(id = R.string.title_1),
+            text = stringResource(id = R.string.text_1),
+            backgroundColor = Color(0xFFEADDFF),
+            modifier = Modifier.weight(1f)
+        )
+        Quadrant(
+            title = stringResource(id = R.string.title_2),
+            text = stringResource(id = R.string.text_2),
+            backgroundColor = Color(0xFFEADDFF),
+            modifier = Modifier.weight(1f)
+
+        )
     }
+
+
 
 }
 @Composable
@@ -104,6 +96,6 @@ fun Quadrant(title: String, text: String, backgroundColor: Color, modifier : Mod
 @Composable
 fun GreetingPreview() {
     ComposeQuadrantTheme {
-        Greeting(stringResource(id = R.string.title_1), stringResource(id = R.string.text_1))
+        Greeting()
     }
 }

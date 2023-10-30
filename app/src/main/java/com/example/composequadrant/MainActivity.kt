@@ -44,20 +44,37 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting() {
 
-    Row (){
-        Quadrant(
-            title = stringResource(id = R.string.title_1),
-            text = stringResource(id = R.string.text_1),
-            backgroundColor = Color(0xFFEADDFF),
-            modifier = Modifier.weight(1f)
-        )
-        Quadrant(
-            title = stringResource(id = R.string.title_2),
-            text = stringResource(id = R.string.text_2),
-            backgroundColor = Color(0xFFEADDFF),
-            modifier = Modifier.weight(1f)
+    Column() {
+        Row(Modifier.weight(1f)) {
+            Quadrant(
+                title = stringResource(id = R.string.title_1),
+                text = stringResource(id = R.string.text_1),
+                backgroundColor = Color(0xFFEADDFF),
+                modifier = Modifier.weight(1f)
+            )
+            Quadrant(
+                title = stringResource(id = R.string.title_2),
+                text = stringResource(id = R.string.text_2),
+                backgroundColor = Color(0xFFD0BCFF),
+                modifier = Modifier.weight(1f)
 
-        )
+            )
+        }
+        Row(Modifier.weight(1f)) {
+            Quadrant(
+                title = stringResource(id = R.string.title_3),
+                text = stringResource(id = R.string.text_3),
+                backgroundColor = Color(0xFFB69DF8),
+                modifier = Modifier.weight(1f)
+            )
+            Quadrant(
+                title = stringResource(id = R.string.title_4),
+                text = stringResource(id = R.string.text_4),
+                backgroundColor = Color(0xFFF6EDFF),
+                modifier = Modifier.weight(1f)
+
+            )
+        }
     }
 
 
@@ -65,32 +82,32 @@ fun Greeting() {
 }
 @Composable
 fun Quadrant(title: String, text: String, backgroundColor: Color, modifier : Modifier = Modifier){
+
     Column(
-        modifier = modifier.background(backgroundColor)
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+            .background(backgroundColor)
+            .padding(16.dp)
+            .fillMaxSize()
+
+
+
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = modifier
-                .padding(16.dp)
-                .fillMaxSize()
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        Text(
+            text = text,
+            textAlign = TextAlign.Justify,
 
 
-        ) {
-            Text(
-                text = title,
-                fontWeight = FontWeight.Bold,
-                modifier = modifier.padding(bottom = 16.dp)
-            )
-            Text(
-                text = text,
-                textAlign = TextAlign.Justify,
-                modifier = modifier
-
-            )
-        }
-
+        )
     }
+
+
 }
 @Preview(showBackground = true)
 @Composable
